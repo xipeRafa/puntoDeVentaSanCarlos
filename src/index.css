@@ -1,0 +1,23 @@
+input[type=text]{
+  margin-bottom:8px;
+}
+
+
+.btnBorrarInforme {
+    text-align: center;
+}
+
+h3{
+  color:goldenrod;
+}
+
+
+html, body{
+/*  background-color: rgb(249, 235, 234);*/
+background-color: gainsboro;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

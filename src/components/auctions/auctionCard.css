@@ -1,0 +1,18 @@
+h5{
+  font-weight: bolder;!important;
+
+}
+
+p{
+  font-weight: lighter!important;
+}
+
+p span{
+  font-weight: normal!important;
+}
+
+.card{
+  background-color: gainsboro!important;
+  border: 11px solid red!important;
+  margin: 6px;
+}
