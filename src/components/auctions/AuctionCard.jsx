@@ -43,12 +43,11 @@ export const AuctionCard = ({ items, UpdateById }) => {
 
      return (
         <div className='card p-2'>
-         <h3 className='text-white'>ORDENES DE HERMOSILLO</h3>
+         <h3 className='text-white'>ORDENES DE SAN CARLOS</h3>
         <button className='btn btn-info m-2' onClick={handleToggleOrders}> {toggleOrders ? 'Entregados' : 'Por Entregar'} </button>
        
            
-            {items.filter((el) => el.city === "hermosillo")
-                .map((el, i) => (
+            {items.map((el, i) => (
 
                     <div key={i} className="item">
 

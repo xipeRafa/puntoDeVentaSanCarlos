@@ -46,7 +46,7 @@ export const NavComp = () => {
 
       <div className="w-100 d-flex justify-content-center">
         <div className="navbar-brand mb-4 text-center">
-          <h2 className=''>PUNTO DE VENTA HERMOSILLO</h2>
+          <h2 className=''>PUNTO DE VENTA SAN CARLOS</h2>
           <h3>POLANCO GUAYABERAS</h3>
         </div>
       </div>
