@@ -25,7 +25,7 @@ export const AuctionCard = ({ items, UpdateById }) => {
 
 
 
-  const handleToggle =(id, el)=>{
+    const handleToggle =(id, el)=>{
 
         const obj = el
 
@@ -37,39 +37,27 @@ export const AuctionCard = ({ items, UpdateById }) => {
 
         setToggle(!toggle)
 
-<<<<<<< HEAD
-         //=====//================//
-=======
-        //=====//================//
->>>>>>> ce836bdbff490378be8a44a1a1cbb505b5600cef
+
 
         obj.items.map((el,i)=>{
 
             if(el?.stockHermosillo===undefined){
-<<<<<<< HEAD
                 el.stockSanCarlos = el?.stockSanCarlos - el.quantity
                 UpdateByIdInventario(el.id, el)
-                console.log('sancarlos update')
             }else{
                 el.stockHermosillo = el?.stockHermosillo - el.quantity
                 UpdateByIdInventario(el.id, el)
-                console.log('hermosillo update ')
-            }
-
-        })
-=======
-                obj.items[i].stockSanCarlos = el?.stockSanCarlos - el.quantity
-                UpdateById(id, obj)
-            }else{
-                obj.items[i].stockHermosillo = el?.stockHermosillo - el.quantity
-                UpdateById(id, obj)
             }
 
         })
 
+           
+    }
 
->>>>>>> ce836bdbff490378be8a44a1a1cbb505b5600cef
-  }
+        
+
+
+  
 
   const handleToggleOrders =()=>{
         setToggleOrders(!toggleOrders)
