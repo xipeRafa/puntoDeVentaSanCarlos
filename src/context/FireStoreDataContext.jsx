@@ -120,6 +120,18 @@ const FireStoreDataProvider = (props) => {
 
 
 
+   const UpdateByIdInventario = async (id, obj) => {
+    const aaDoc = doc(firestoreDB, 'inventario', id);
+    try {
+      await updateDoc(aaDoc, obj);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
+
 
 
   return (
@@ -133,7 +145,8 @@ const FireStoreDataProvider = (props) => {
         setToggle,
         toggle,
         toggleOrders,
-        setToggleOrders
+        setToggleOrders,
+        UpdateByIdInventario
       }}
     >
       {props.children}

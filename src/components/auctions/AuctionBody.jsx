@@ -7,7 +7,7 @@ import { FireStoreDataContext } from '../../context/FireStoreDataContext';
 import { AuthContext } from '../../context/AuthContext';
 
 export const AuctionBody = () => {
-  const { items, UpdateById } = useContext(FireStoreDataContext);
+  const { items, UpdateById, UpdateByIdInventario} = useContext(FireStoreDataContext);
   const { stateLogout } = useContext(AuthContext);
 
   console.log(items);
@@ -19,7 +19,7 @@ export const AuctionBody = () => {
       {stateLogout ? (
         <div className="">
         {localStorage.getItem('userEmailLS') !== null ? (
-            <AuctionCard items={items} UpdateById={UpdateById} key={Date.now()} />
+            <AuctionCard items={items} UpdateById={UpdateById} UpdateByIdInventario={UpdateByIdInventario} key={Date.now()} />
             ) : (<p>Holis</p>) }
         </div>
       ) : (

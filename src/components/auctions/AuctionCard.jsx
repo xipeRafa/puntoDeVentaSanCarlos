@@ -19,7 +19,7 @@ export const AuctionCard = ({ items, UpdateById }) => {
 
 
 
-  const { deleteById, setToggle, toggle, toggleOrders, setToggleOrders } = useContext(FireStoreDataContext);
+  const { deleteById, setToggle, toggle, toggleOrders, setToggleOrders, UpdateByIdInventario } = useContext(FireStoreDataContext);
 
 
 
@@ -32,6 +32,22 @@ export const AuctionCard = ({ items, UpdateById }) => {
         UpdateById(id, obj)
 
         setToggle(!toggle)
+
+         //=====//================//
+
+        obj.items.map((el,i)=>{
+
+            if(el?.stockHermosillo===undefined){
+                el.stockSanCarlos = el?.stockSanCarlos - el.quantity
+                UpdateByIdInventario(el.id, el)
+                console.log('sancarlos update')
+            }else{
+                el.stockHermosillo = el?.stockHermosillo - el.quantity
+                UpdateByIdInventario(el.id, el)
+                console.log('hermosillo update ')
+            }
+
+        })
   }
 
   const handleToggleOrders =()=>{
