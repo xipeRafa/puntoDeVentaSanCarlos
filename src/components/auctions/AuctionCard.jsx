@@ -82,7 +82,7 @@ export const AuctionCard = ({ items, UpdateById }) => {
                             <h3>Comprador: {el.buyer.name}</h3>
 
                             {el.items.map((el, i) => (
-                                <b key={i}>Producto ID: {el.id}  Cantidad: { el.quantity} <br /><br /></b>
+                                <b key={i}>Producto ID: {el.id} - Cantidad: { el.quantity} <br /><br /></b>
                             ))}
 
                             <p>Correo: {el.buyer.email}</p>
