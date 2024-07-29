@@ -101,6 +101,8 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                                     year: "numeric",
                                     month: "long",
                                     day: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric"
                                 })}
                             </p>
 
