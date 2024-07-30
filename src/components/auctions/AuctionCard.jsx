@@ -21,7 +21,7 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
 
 
-    const { deleteById, setToggle, toggle, toggleOrders, setToggleOrders } = useContext(FireStoreDataContext);
+    const { deleteById, setToggle, toggle, toggleOrders, setToggleOrders, itemsInventario } = useContext(FireStoreDataContext);
 
     const[noteState, setNoteState]=useState('')
 
@@ -56,8 +56,32 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
         obj.items.map((el,i)=>{
 
-                el.stockSanCarlos = el?.stockSanCarlos - el.quantity
-                UpdateByIdInventario(el.id, el)
+               const a = itemsInventario.filter(ele => ele.id === el.id )[i]
+
+
+                if (a.historiSales === undefined) {
+                    console.log('undefined')
+
+                        a.historiSales = [];
+                        a.historiSales.push(dueDate);
+
+                        a.notaDeVenta = []
+                        a.notaDeVenta.push(noteState)
+
+                        a.stockSanCarlos = a?.stockSanCarlos - el.quantity
+
+                        UpdateByIdInventario(a.id, a)
+
+                } else {
+console.log('else')
+                        a.historiSales.push(dueDate);
+                        a.notaDeVenta.push(noteState)
+
+                        a.stockSanCarlos = a?.stockSanCarlos - el.quantity
+
+                        UpdateByIdInventario(el.id, a)
+
+                }
             
         })
     }

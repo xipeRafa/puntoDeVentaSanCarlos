@@ -25,6 +25,8 @@ export const FireStoreDataContext = createContext();
 
 const FireStoreDataProvider = (props) => {
   const [items, setItems] = useState([]);
+  
+  const [itemsInventario, setItemsInventario] = useState([]);
 
   const [toggleOrders, setToggleOrders]=useState(false)
 
@@ -39,7 +41,6 @@ const FireStoreDataProvider = (props) => {
 
 
 
-  const postCollection = collection(firestoreDB, 'inventario');
 
   const [toggle, setToggle] = useState(true);
 
@@ -66,7 +67,42 @@ const FireStoreDataProvider = (props) => {
     isMounted = false;
   }, [toggle]);
 
+
+
+  const itemCollectionInventario = query(
+    collection(firestoreDB, 'inventario'),
+    where("sucursal", "==", "San Carlos")
+  );
+
+
+   useEffect(() => {
+    let isMounted = true;
+
+    getDocs(itemCollectionInventario)
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          console.log('No results!');
+        }
+
+        const documents = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setItemsInventario(documents);
+      })
+      .catch((err) => {
+        console.log('Error searching items', err);
+      });
+
+    isMounted = false;
+  }, [toggle]);
   //============================= images functions ===========================//
+
+
+  const postCollection = collection(firestoreDB, 'inventario');
+
+
 
   const handleFileAdd = (selectedFile, postBody) => {
     const filesFolderRef = ref(
@@ -141,12 +177,12 @@ const FireStoreDataProvider = (props) => {
         deleteById,
         UpdateById,
         handleFileAdd,
-        postCollection,
         setToggle,
         toggle,
         toggleOrders,
         setToggleOrders,
-        UpdateByIdInventario
+        UpdateByIdInventario,
+        itemsInventario
       }}
     >
       {props.children}
