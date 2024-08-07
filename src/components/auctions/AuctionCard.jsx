@@ -115,10 +115,6 @@ console.log('else')
                         <div className="texto">
                             <h3>Comprador: {el.buyer.name}</h3>
 
-                            {el.items.map((el, i) => (
-                                <b key={i}>Producto ID: {el.id} - Cantidad: { el.quantity} <br /><br /></b>
-                            ))}
-
                             <p>
                                 Fecha de Compra:{" "}
                                 {new Date(el.date).toLocaleDateString("es-ES", {
@@ -129,6 +125,16 @@ console.log('else')
                                     minute: "numeric"
                                 })}
                             </p>
+
+                           {el.items.map((el, i) => (
+                                <b key={i}> 
+                                    <img style={{width:'100px'}} src={el.imgUrl}/><br />
+                                    Cantidad: { el.quantity}, <br /> 
+                                    Tallas: {el.talla.map((elee, i)=>(<span key={i+'elee'}> {elee},</span>))} <br /><br />
+                                </b>
+                            ))} 
+
+                            
 
                             <p>Correo: {el.buyer.email}</p>
                             <p>Celular: {el.buyer.phone}</p>
