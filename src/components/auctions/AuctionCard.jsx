@@ -25,6 +25,17 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
     const[noteState, setNoteState]=useState('')
 
+   const[tallaState, setTallaState]=useState({})
+
+    console.log(tallaState)
+
+    const handleTallaState=(e)=>{
+      let str = e.target.value
+      let talla = str.split(',')
+      setTallaState({...tallaState, [e.target.name] : talla})
+    }
+ 
+
 
 
     let currentDate = new Date();
@@ -130,9 +141,14 @@ console.log('else')
                                 <b key={i}> 
                                     <img style={{width:'100px'}} src={el.imgUrl}/><br />
                                     Cantidad: { el.quantity}, <br /> 
-                                    Tallas: {el.talla.map((elee, i)=>(<span key={i+'elee'}> {elee},</span>))} <br /><br />
+                                    Tallas: {el.talla.map((elee, i)=>(<span key={i+'elee'}> {elee},</span>))} <br />
+
+                                    <input 
+                                            type="text" min='0' placeholder='Talla Escogida' 
+                                            name={el.id}
+                                            onChange={(e)=>handleTallaState(e)}/><br /><br /><br />
                                 </b>
-                            ))} 
+                            ))}
 
                             
 
