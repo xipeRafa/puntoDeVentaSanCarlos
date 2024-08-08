@@ -106,8 +106,6 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
             const aa = itemsInventario.filter(ele => ele.id === el.id)[0]
 
-            console.log(Object.entries(tallaState))
-
 
             for (let ind = 0; ind < Object.keys(tallaState).length ; ind++) {
 
@@ -118,16 +116,13 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                             let b = aa.talla.filter(el => el !== everyValueArr[i])
                             aa.talla = b
 
-                            console.log(aa)
-
-                            //console.log(Object.keys(tallaState)[ind], aa)
                             UpdateByIdInventario(Object.keys(tallaState)[ind], aa)
                     }   
 
             }
 
             
-
+            setToggle(!toggle)
             //console.log(Object.values(tallaState).flat())
 
         })
@@ -178,7 +173,12 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                                     <p>{ele.id} </p>
                                     <img style={{width:'100px'}} src={ele.imgUrl}/><br />
                                     Cantidad: { ele.quantity}, <br /> 
-                                    Tallas: {ele.talla.map((el, i)=>(<b key={i+'talla'}>{el}, {''}</b>))} <br />
+
+                                    <span className={el.takenByCustomer === true && 'd-none'}> Tallas: </span>
+                                    
+                                    {ele.talla.map((elem, i)=>(
+                                        <b key={i+'talla'} className={el.takenByCustomer === true && 'd-none'}>{elem}, {''}</b>
+                                    ))} <br />
 
                                     <input className={el.takenByCustomer === true ? 'd-none' : 'c-r'}
                                             type="text" placeholder='Talla Escogida' 
