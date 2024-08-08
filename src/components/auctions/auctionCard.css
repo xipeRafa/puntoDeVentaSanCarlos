@@ -16,3 +16,12 @@ p span{
   border: 11px solid red!important;
   margin: 6px;
 }
+
+
+.d-none{
+  display: none;
+}
+
+.c-r{
+  color:red;
+}
