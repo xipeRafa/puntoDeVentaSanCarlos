@@ -52,16 +52,16 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
     const handleToggle =(id, el)=>{
 
-        if(noteState.length <= 0){
-                alert('Falta el Numero Nota de Venta')
-                return
-        }
+        // if(noteState.length <= 0){
+        //         alert('Falta el Numero Nota de Venta')
+        //         return
+        // }
 
         const obj = el
 
         obj.takenByCustomer = true
-        el.historiSale = dueDate
-        obj.notaDeVenta = noteState
+        // el.historiSale = dueDate
+        // obj.notaDeVenta = noteState
 
         UpdateById(id, obj)
 
@@ -70,62 +70,62 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
 
         //=====//================ Inventario  // 
 
-        obj.items.map((el,i)=>{
+        // obj.items.map((el,i)=>{
 
-               const a = itemsInventario.filter(ele => ele.id === el.id )[i]
-
-
-                if (a.historiSales === undefined) {
+        //        const a = itemsInventario.filter(ele => ele.id === el.id )[i]
 
 
-                        a.historiSales = [];
-                        a.historiSales.push(dueDate);
+        //         if (a.historiSales === undefined) {
 
-                        a.notaDeVenta = []
-                        a.notaDeVenta.push(noteState)
 
-                        a.stockSanCarlos = a?.stockSanCarlos - el.quantity
+        //                 a.historiSales = [];
+        //                 a.historiSales.push(dueDate);
 
-                        UpdateByIdInventario(a.id, a)
+        //                 a.notaDeVenta = []
+        //                 a.notaDeVenta.push(noteState)
 
-                } else {
+        //                 a.stockSanCarlos = a?.stockSanCarlos - el.quantity
 
-                        a.historiSales.push(dueDate);
-                        a.notaDeVenta.push(noteState)
+        //                 UpdateByIdInventario(a.id, a)
 
-                        a.stockSanCarlos = a?.stockSanCarlos - el.quantity
+        //         } else {
 
-                        UpdateByIdInventario(el.id, a)
+        //                 a.historiSales.push(dueDate);
+        //                 a.notaDeVenta.push(noteState)
 
-                }
+        //                 a.stockSanCarlos = a?.stockSanCarlos - el.quantity
+
+        //                 UpdateByIdInventario(el.id, a)
+
+        //         }
             
-        })
+        // })
 
 
-         obj.items.map((el,i)=>{
+        // obj.items.map((el,i)=>{
 
-            const aa = itemsInventario.filter(ele => ele.id === el.id)[0]
-
-
-            for (let ind = 0; ind < Object.keys(tallaState).length ; ind++) {
-
-                    let everyValueArr = tallaState[Object.keys(tallaState)[ind]] // de la primer llave te da el primer valor y de la segunda llave te da el segundo objeto
+        //     const aa = itemsInventario.filter(ele => ele.id === el.id)[0]
 
 
-                    for (let i = 0; i < everyValueArr.length ; i++) {
-                            let b = aa.talla.filter(el => el !== everyValueArr[i])
-                            aa.talla = b
+        //     for (let ind = 0; ind < Object.keys(tallaState).length ; ind++) {
 
-                            UpdateByIdInventario(Object.keys(tallaState)[ind], aa)
-                    }   
+        //             let everyValueArr = tallaState[Object.keys(tallaState)[ind]] // de la primer llave te da el primer valor y de la segunda llave te da el segundo objeto
 
-            }
+
+        //             for (let i = 0; i < everyValueArr.length ; i++) {
+        //                     let b = aa.talla.filter(el => el !== everyValueArr[i])
+        //                     aa.talla = b
+
+        //                     UpdateByIdInventario(Object.keys(tallaState)[ind], aa)
+        //             }   
+
+        //     }
 
             
-            setToggle(!toggle)
-            //console.log(Object.values(tallaState).flat())
+        //     setToggle(!toggle)
+        //     console.log(Object.values(tallaState).flat())
 
-        })
+        // })
     }
 
 
@@ -171,10 +171,10 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                            {el.items.map((ele, i) => (
                                 <b key={i}>
                                     <p>{ele.id} </p>
-                                    <img style={{width:'100px'}} src={ele.imgUrl}/><br />
-                                    Cantidad: { ele.quantity}, <br /> 
+                                    <img style={{width:'100px'}} src={ele.imgUrl}/>
+                                    - Cantidad: { ele.quantity} <br /> 
 
-                                    <span className={el.takenByCustomer === true && 'd-none'}> Tallas: </span>
+                               {/*     <span className={el.takenByCustomer === true && 'd-none'}> Tallas: </span>
                                     
                                     {ele.talla.map((elem, i)=>(
                                         <b key={i+'talla'} className={el.takenByCustomer === true && 'd-none'}>{elem}, {''}</b>
@@ -183,12 +183,12 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                                     <input className={el.takenByCustomer === true ? 'd-none' : 'c-r'}
                                             type="text" placeholder='Talla Escogida' 
                                             name={ele.id} value={tallaState[ele.id]}
-                                            onChange={(e)=>handleTallaState(e)}/><br /><br /><br />
+                                            onChange={(e)=>handleTallaState(e)}/><br /><br /><br />*/}
                                 </b>
                             ))}
 
                             
-
+                           <br />
                             <p>Correo: {el.buyer.email}</p>
                             <p>Celular: {el.buyer.phone}</p>
                             <p>Ciudad: {el.city}</p>
@@ -200,23 +200,23 @@ export const AuctionCard = ({ items, UpdateById, UpdateByIdInventario }) => {
                             
                             <br/>
 
-                            {
+                         {/*   {
                                 el.takenByCustomer === true &&
                                     <>
                                             <p className='mt-2'> Pagado el : <b>{milisegundosComoFecha(el?.historiSale || 0)}</b></p>
                                             <p> Nota de Venta : <b>No. {el.notaDeVenta}</b></p>
                                     </>
-                            }
+                            }*/}
 
                         </div>
 
-                            {
+                           {/* {
                                 el.takenByCustomer === false &&
                                     <>
                                             <p className='m-0'>Status: <b>{el.takenByCustomer ? 'Entregado' : 'Pendiente'}</b></p>
                                             <input className='my-3 c-r' type="number" min='0' placeholder='# Nota de Venta' value={noteState} onChange={(e)=>setNoteState(e.target.value)}/>
                                     </>
-                            }
+                            }*/}
 
                             <br/>
 
